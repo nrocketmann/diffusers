@@ -784,10 +784,12 @@ def main(args):
         dataset = load_dataset(
             args.dataset_name, args.dataset_config_name, cache_dir=args.cache_dir, data_dir=args.train_data_dir
         )
+        print('loading wrong way!!', args.dataset_name)
     else:
         data_files = {}
         if args.train_data_dir is not None:
             data_files["train"] = os.path.join(args.train_data_dir, "**")
+            print('loading from data_dir!!')
         dataset = load_dataset(
             "imagefolder",
             data_files=data_files,

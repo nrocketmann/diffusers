@@ -1,0 +1,12 @@
+CUDA_VISIBLE_DEVICES="0" accelerate launch --mixed_precision="no" train_text_to_image_lora_sdxl.py \
+  --pretrained_model_name_or_path="stabilityai/stable-diffusion-xl-base-1.0" \
+  --train_data_dir="/home/jovyan/data/nhirschkind/icon_sample/train/" \
+  --caption_column="text" \
+  --resolution=512 --random_flip \
+  --train_batch_size=1 \
+  --num_train_epochs=100 --checkpointing_steps=5000 \
+  --learning_rate=1e-04 --lr_scheduler="constant" --lr_warmup_steps=0 \
+  --seed=42 \
+  --output_dir="/home/jovyan/data/nhirschkind/test_sd/" \
+  --validation_prompt="The thumbnail of a Roblox game called Toilet Tower Obby, described by its creator as Hi! This belongs in the toilet." \
+  --report_to="tensorboard"
