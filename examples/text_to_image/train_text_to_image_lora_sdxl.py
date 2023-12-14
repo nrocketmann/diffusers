@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Fine-tuning script for Stable Diffusion XL for text2image with support for LoRA."""
-
+# config location: /home/jovyan/.cache/huggingface/accelerate/default_config.yaml 
 import argparse
 import logging
 import math
@@ -1279,5 +1279,8 @@ def main(args):
 
 
 if __name__ == "__main__":
+    import torch
+    print("Cuda support:", torch.cuda.is_available(),":", torch.cuda.device_count(), "devices")
+
     args = parse_args()
     main(args)
