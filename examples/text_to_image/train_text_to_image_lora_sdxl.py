@@ -273,6 +273,7 @@ def parse_args(input_args=None):
             " resolution"
         ),
     )
+
     parser.add_argument(
         "--center_crop",
         default=False,
@@ -773,6 +774,10 @@ def main(args):
         weight_decay=args.adam_weight_decay,
         eps=args.adam_epsilon,
     )
+
+    # would be great to know number of trainable params:
+    total_param_cnt_ = sum([p.numel() for p in params_to_optimize])
+    print('################################ Total trainable parameters: ', total_param_cnt_)
 
     # Get the datasets: you can either provide your own training and evaluation files (see below)
     # or specify a Dataset from the hub (the dataset will be downloaded automatically from the datasets Hub).
