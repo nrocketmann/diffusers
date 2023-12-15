@@ -9,5 +9,5 @@ CUDA_VISIBLE_DEVICES="0,1,2,3" accelerate launch --mixed_precision="bf16" train_
   --seed=42 \
   --gradient_accumulation_steps 4 \
   --output_dir="/home/jovyan/data/nhirschkind/test_sd/$(date)/" \
-  --validation_prompt='The thumbnail of a Roblox game called "Toilet Tower Obby", described by its creator as "Hi! This belongs in the toilet."' \
+  --validation_prompt='The thumbnail of a Roblox game called "Toilet Tower Obby"' \
   --report_to="tensorboard"
