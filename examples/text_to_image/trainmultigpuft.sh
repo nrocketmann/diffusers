@@ -1,13 +1,14 @@
-CUDA_VISIBLE_DEVICES="0,1,2,3" accelerate launch --mixed_precision="fp16" train_text_to_image_sdxl.py \
+CUDA_VISIBLE_DEVICES="0,1,2,3,4,5,6,7" accelerate launch --mixed_precision="fp16" train_text_to_image_sdxl.py \
   --pretrained_model_name_or_path="stabilityai/stable-diffusion-xl-base-1.0" \
   --center_crop \
   --train_data_dir="/home/jovyan/data/nhirschkind/icon_sample/train/" \
   --resolution=256 \
   --train_batch_size=1 \
-  --num_train_epochs=20 --checkpointing_steps=5000 \
+  --num_train_epochs=20 --checkpointing_steps=500 \
   --learning_rate=1e-04 --lr_scheduler="constant" --lr_warmup_steps=0 \
   --seed=42 \
-  --gradient_accumulation_steps 1 \
+  --gradient_accumulation_steps 4 \
   --output_dir="/home/jovyan/data/nhirschkind/test_sd/$(date)/" \
-  --validation_prompt='The thumbnail of a Roblox game called "Toilet Tower Obby", described by its creator as "Hi! This belongs in the toilet."' \
-  --report_to="tensorboard"
+  --validation_prompt='The thumbnail of a Roblox game called "Toilet Tower Obby"' \
+  --report_to="tensorboard" \
+  --enable_xformers_memory_efficient_attention

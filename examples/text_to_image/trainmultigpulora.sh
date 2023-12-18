@@ -1,8 +1,8 @@
-CUDA_VISIBLE_DEVICES="0,1,2,3" accelerate launch --mixed_precision="bf16" train_text_to_image_lora_sdxl.py \
+CUDA_VISIBLE_DEVICES="0,1,2,3,4,5,6,7" accelerate launch --mixed_precision="bf16" train_text_to_image_lora_sdxl.py \
   --pretrained_model_name_or_path="stabilityai/stable-diffusion-xl-base-1.0" \
   --center_crop \
   --train_data_dir="/home/jovyan/data/nhirschkind/big_icons2/train/" \
-  --resolution=1024 \
+  --resolution=512 \
   --train_batch_size=1 \
   --rank 256 \
   --num_train_epochs=1 --checkpointing_steps=500 \
