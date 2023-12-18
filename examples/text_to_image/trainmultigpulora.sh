@@ -2,12 +2,13 @@ CUDA_VISIBLE_DEVICES="0,1,2,3" accelerate launch --mixed_precision="bf16" train_
   --pretrained_model_name_or_path="stabilityai/stable-diffusion-xl-base-1.0" \
   --center_crop \
   --train_data_dir="/home/jovyan/data/nhirschkind/big_icons2/train/" \
-  --resolution=256 \
-  --train_batch_size=24 \
-  --num_train_epochs=20 --checkpointing_steps=5000 \
+  --resolution=1024 \
+  --train_batch_size=1 \
+  --rank 256 \
+  --num_train_epochs=1 --checkpointing_steps=500 \
   --learning_rate=1e-04 --lr_scheduler="constant" --lr_warmup_steps=0 \
   --seed=42 \
-  --gradient_accumulation_steps 4 \
+  --gradient_accumulation_steps 1 \
   --output_dir="/home/jovyan/data/nhirschkind/test_sd/$(date)/" \
   --validation_prompt='The thumbnail of a Roblox game called "Toilet Tower Obby"' \
   --report_to="tensorboard"
